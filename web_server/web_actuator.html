@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Actuator</title>
+    <style>
+        div {
+            padding-left: 20px;
+        }
+        div > p {
+            font-size: 20px;
+        }
+        input[type="button"]{
+            height: 30px;
+            width: 60px;
+            border-radius: 10%;
+            border: 2px black solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>Control Actuator</h1>
+    <p>current power: {% if in_state_dict['PWM'] == 0 %} OFF
+                      {% elif in_state_dict['PWM'] == 255 %} ON
+                      {% endif %}
+    </p>
+    <hr>
+    <div>
+        <p>ON:
+            <a href="{{url_for('OOF', onf='on')}}">
+                <input type="button" value="ON">
+            </a>
+        </p>
+    </div>
+    <div>
+        <p>OFF: 
+            <a href="{{url_for('OOF', onf='off')}}">
+                <input type="button" value="OFF">
+            </a>
+        </p>
+    </div>
+    <div>
+        <p>Open:
+            <a href="{{url_for('OOC', state='open')}}">
+               <input type="button" value="OPEN">
+            </a>
+        </p>
+    </div>
+    <div>
+        <p>Close:
+            <a href="{{url_for('OOC', state='close')}}">
+                <input type="button" value="CLOSE">
+            </a>
+        </p>
+    </div>
+</body>
+</html>
